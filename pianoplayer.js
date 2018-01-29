@@ -2,7 +2,22 @@
   function playAccidentalNote(){
 
     console.log("Accidental note should be playing now.");
-    console.log(this);
+    /*console.log(this);*/
+    var note = this.classList[1];
+
+    console.log(note);
+    const audio = document.getElementById("sound-"+note);
+
+    audio.currentTime = 0;
+    audio.play();
+
+    if(note === "As") note = "A";
+    if(note === "B") note = "B";
+    document.getElementById("current_note").innerHTML = note;
+
+    this.classList.add('playing');
+    var playingKey = this;
+    setTimeout(function(){playingKey.classList.remove('playing')}, 500);
 
     //TODO: Sounds from black keys
 
